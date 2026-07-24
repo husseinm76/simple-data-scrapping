@@ -2,7 +2,7 @@
 
 from scrapper import get_html, extract_countries_data
 from database import  write_on_db, read_data, db_exist
-from model import model_exist
+from model import model_exist, train_model
 
 
 
@@ -22,12 +22,12 @@ if not db_exist(DB_FILE):
 
 if not model_exist(MODEL_FILE):
 
-    print('Model need to train')
-    data_set = read_data(DB_FILE)
-    # train
+    print('! No Model Exists: Next Step-> Train a Model')
+    rows = read_data(DB_FILE)
+    model = train_model(rows)
     # save
 
-# load model
+
 # predict
 
 # load model

@@ -19,10 +19,11 @@ def reshape_data_for_sklearn(rows):
     return x,y
 
 
-def train_model(X,Y):
-
+def train_model(rows):
+    x,y = reshape_data_for_sklearn(rows)
     model = LinearRegression()
-    model.fit(X,Y)
+    model.fit(x,y)
+    print('* Train Model : Successfully')
     return model
 
 def save_model():
@@ -30,3 +31,11 @@ def save_model():
 
 def load_model():
     pass
+
+if __name__ == '__main__':
+
+    from database import read_data
+
+    rows = read_data('countries.db')
+    model = train_model(rows)
+    print(model.predict([[520]]))
