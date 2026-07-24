@@ -31,10 +31,15 @@ def save_model(model, model_file):
 
     with open(model_file,'wb') as file:
         pickle.dump(model, file)
-    print('* Save Model : Successfully')
+    print('* Save Model to File: Successfully')
 
-def load_model():
-    pass
+def load_model(model_file):
+
+    with open(model_file, 'rb') as file:
+        print('* Load Model as File: Successfully')
+        return pickle.load(file)
+    
+    
 
 if __name__ == '__main__':
 

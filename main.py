@@ -2,7 +2,7 @@
 
 from scrapper import get_html, extract_countries_data
 from database import  write_on_db, read_data, db_exist
-from model import model_exist, train_model, save_model
+from model import model_exist, train_model, save_model, load_model
 
 
 
@@ -28,7 +28,5 @@ if not model_exist(MODEL_FILE):
     save_model(model, MODEL_FILE)
 
 
-
-
-# load model
+model = load_model(MODEL_FILE)
 # predict
