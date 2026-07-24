@@ -1,4 +1,5 @@
 from sklearn.linear_model import LinearRegression
+import  pickle
 
 def model_exist(model_file):
     import os
@@ -26,8 +27,11 @@ def train_model(rows):
     print('* Train Model : Successfully')
     return model
 
-def save_model():
-    pass
+def save_model(model, model_file):
+
+    with open(model_file,'wb') as file:
+        pickle.dump(model, file)
+    print('* Save Model : Successfully')
 
 def load_model():
     pass
