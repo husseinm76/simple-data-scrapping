@@ -1,7 +1,7 @@
 
 
 from scrapper import get_html, extract_countries_data
-from database import  write_on_db, read_data, db_exist
+from database import  write_on_db, read_data, db_exist, create_db
 from model import model_exist, train_model, save_model, predict_area
 
 
@@ -16,6 +16,7 @@ if not db_exist(DB_FILE):
     print('! No Database Exists: Next Step-> Scrape Data and Create db')
     html_page = get_html(URL)
     countries_data = extract_countries_data(html_page)
+    create_db(DB_FILE)
     write_on_db(countries_data, DB_FILE)
 
 

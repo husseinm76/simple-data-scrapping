@@ -46,8 +46,20 @@ def db_exist(db_file_name):
     import os
     return os.path.exists(db_file_name)
 
-def creat_db():
-    pass
+def create_db(db_file):
+
+    with sqlite3.connect(db_file) as connection:
+        cursor = connection.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS countries(
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                country_name TEXT UNIQUE NOT NULL,
+                capital TEXT,
+                population INTEGER,
+                area INTEGER
+            )
+        """)
+    print('* Creat Database: Successfully')
 
 def has_data(db_file):
     pass
