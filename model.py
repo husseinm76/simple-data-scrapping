@@ -39,7 +39,25 @@ def load_model(model_file):
         print('* Load Model as File: Successfully')
         return pickle.load(file)
     
+def predict_area(model_file):
+
+    model = load_model(model_file)
+
+    print('\n--- Let\'s Predict the Area by Population ---')
+
     
+    while True:
+
+        user_input = input('Input Population (or \'q\' for quit) : ')
+
+        if user_input == 'q':
+            print('--- Finish the App ---')
+            return
+        
+        area = model.predict([[int(user_input)]]).tolist()[0]
+        print(f'Predicted Area: {area}')
+
+
 
 if __name__ == '__main__':
 
@@ -48,3 +66,5 @@ if __name__ == '__main__':
     rows = read_data('countries.db')
     model = train_model(rows)
     print(model.predict([[520]]))
+
+    predict_area('area_prediction.pkl')
